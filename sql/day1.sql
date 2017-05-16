@@ -1,1 +1,24 @@
 SHOW DATABASES ;
+
+CREATE DATABASE db_1702;
+
+DROP DATABASE db_1702;
+
+-- USE db_1702;
+
+SHOW TABLES ;
+
+CREATE TABLE db_1702.t_student(
+  id INT AUTO_INCREMENT PRIMARY KEY ,
+  sno VARCHAR(10),
+  sname VARCHAR(10),
+  gender CHAR(1),
+  age INT(2)
+);
+
+SELECT *
+FROM db_1702.t_student;
+
+INSERT INTO db_1702.t_student
+    VALUE ('20171010','教授','女',0);
+DELETE FROM db_1702.t_student WHERE age=0;
