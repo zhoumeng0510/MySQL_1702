@@ -1,15 +1,23 @@
-DROP TABLE db_1702.student;
+drop table db_1702.student;
 
-CREATE TABLE db_1702.student(
-  name VARCHAR(255),
-  into TEXT,
-  gender CHAR(2)
+create table db_1702.student(
+  name varchar(255) COMMENT'姓名',
+  intro text COMMENT '简介',
+  gender char(2) COMMENT '性别',
+  age int unsigned COMMENT '年龄',
+  height double(3,2) COMMENT '身高',
+  price decimal(6,2)COMMENT '价格',
+  dob date COMMENT '出生日期',-- date of birth
+  time datetime COMMENT '时间'
 );
 
-INSERT INTO db_1702.student VALUE ('Tom','yellow','M');
+SHOW FULL COLUMNS FROM db_1702.student;
 
-SELECT *
-FROM db_1702.student;
+insert into db_1702.student value ('tom','yellow','m',18,1.75,123.456,'1996-5-10','2017-5-16 10:55:00');
 
-SELECT name
-FROM db_1702.student;
+TRUNCATE TABLE db_1702.student;
+
+DELETE FROM db_1702.student;
+
+select *
+from db_1702.student;
