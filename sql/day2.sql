@@ -1,27 +1,43 @@
 DROP DATABASE IF EXISTS db_1702;
 CREATE DATABASE db_1702;
 
+SELECT *
+FROM db_1702.student;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
 DROP TABLE IF EXISTS db_1702.student;
 CREATE TABLE db_1702.student (
-  id     INT AUTO_INCREMENT PRIMARY KEY -- auto increment 增量\ ['ɪŋkrɪm\(ə\)nt]
+  id     INT     AUTO_INCREMENT PRIMARY KEY -- auto increment 增量\ ['ɪŋkrɪm\(ə\)nt]
   COMMENT 'ID PK', -- id identified
-  sno    VARCHAR(10) COMMENT '学号',
-  name   VARCHAR(255) NOT NULL
+  sno    VARCHAR(10)
+  COMMENT '学号',
+  name   VARCHAR(255)
   COMMENT '姓名', -- 255
   intro  TEXT COMMENT '简介',
-  gender CHAR(2) COMMENT '性别',
-  age    INT UNSIGNED COMMENT '年龄',
+  gender CHAR(2) DEFAULT '男'
+  COMMENT '性别',
+  age    INT UNSIGNED
+  COMMENT '年龄',
   height DOUBLE(3, 2) COMMENT '身高',
   price  DECIMAL(10, 3) COMMENT '价格', -- 1234.56
   dob    DATE COMMENT '出生日期', -- date of birth
   time   DATETIME COMMENT '时间'
 );
 
+ALTER TABLE db_1702.student AUTO_INCREMENT = 10000;
+
 INSERT INTO db_1702.student
-VALUES (NULL, '20170002', 'Jerry', 'asdf', NULL, NULL, 1.7, 1234567.891, '1999-5-1', '2017-5-1 1:39:01');
+VALUES (NULL, '20170002', 'Jerry', 'asdf', '女', 19, 1.7, 1234567.891, '1999-5-1', '2017-5-1 1:39:01');
+
+INSERT INTO db_1702.student
+VALUES (NULL, '20170002', 'Jerry', 'asdf', NULL, 18, 1.7, 1234567.891, '1999-5-1', '2017-5-1 1:39:01');
 
 INSERT INTO db_1702.student
 VALUES (NULL, '20170001', NULL, 'asdf', NULL, NULL, 1.7, 1234567.891, '1999-5-1', '2017-5-1 1:39:01');
+
+INSERT INTO db_1702.student (name, age)
+VALUES ('Zhangsan', 20);
 
 SELECT *
 FROM db_1702.student;
