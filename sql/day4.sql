@@ -6,7 +6,7 @@ SELECT *
 FROM db_1702.student;
 
 INSERT INTO db_1702.student
-    VALUES (NULL ,'002','Jackson','show',18,'M',1.6,12.34,'1998-1-2','2017-5-18 08:36:03');
+    VALUES (NULL ,'002','Jackson','show','M',18,1.6,12.34,'1998-1-2','2017-5-18 08:36:03');
 
 INSERT into db_1702.student(name)
     VALUES ('Tom');
@@ -27,5 +27,22 @@ CREATE TABLE `student` (
 `time` datetime DEFAULT NULL COMMENT '时间',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 INSERT into db_1702.student(name)
 VALUES ('N1'),('N2'),('N3');
+
+SELECT *
+FROM db_1702.student;
+
+UPDATE  db_1702.student
+    SET gender = '女';
+
+UPDATE db_1702.student
+    SET height = 1.6
+WHERE id = 1;
+
+UPDATE db_1702.student
+    SET height = 1.7,name = '张三'
+WHERE id = 2;
+
+
