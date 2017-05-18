@@ -27,6 +27,5 @@ CREATE TABLE `student` (
 `time` datetime DEFAULT NULL COMMENT '时间',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 INSERT into db_1702.student(name)
 VALUES ('N1'),('N2'),('N3');

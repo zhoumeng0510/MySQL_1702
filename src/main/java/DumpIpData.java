@@ -1,5 +1,4 @@
 import org.gjt.mm.mysql.Driver;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

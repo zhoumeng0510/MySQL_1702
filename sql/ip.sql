@@ -6,7 +6,6 @@ CREATE TABLE db_1702.ip (
   max VARCHAR(255) COMMENT '终止 IP 地址',
   geo VARCHAR(255) COMMENT '地理位置'
 );
-
 SELECT count(*)
 FROM db_1702.ip;
 
