@@ -11,6 +11,7 @@ DROP DATABASE db_1702;
 
 SHOW TABLES;
 
+
 CREATE TABLE db_1702.t_student (
   sno    VARCHAR(10), -- variable character 可变长字符类型
   sname  VARCHAR(10), -- 属性 列 字段 column
