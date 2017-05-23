@@ -48,7 +48,6 @@ public class DumpIpData { // dump 导入
         connection.close();
         System.out.println("total time: " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
     }
-
     private static void dump(String min, String max, String geo) throws SQLException {
         preparedStatement.setString(1, min);
         preparedStatement.setString(2, max);

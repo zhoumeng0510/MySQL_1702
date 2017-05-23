@@ -1,7 +1,6 @@
 SELECT *
 FROM scott.emp
 LIMIT 3, 0; -- limit 限制\ ['lɪmɪt]
-
 SELECT *
 FROM scott.emp
 LIMIT 3, 4;

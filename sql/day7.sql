@@ -1,5 +1,4 @@
 SHOW DATABASES;
-
 SELECT
   e.ENAME,
   d.DNAME

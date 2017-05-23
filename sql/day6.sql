@@ -74,7 +74,6 @@ SELECT
   d.DNAME
 FROM scott.dept d RIGHT OUTER JOIN scott.emp e -- 左外联接
     ON e.DEPTNO = d.DEPTNO
-
 UNION -- 并集 自动去重
 
 SELECT
