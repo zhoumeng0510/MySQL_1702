@@ -1,4 +1,5 @@
-import org.gjt.mm.mysql.Driver;
+import com.mysql.jdbc.Driver;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,7 +7,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 /**
  * Created by zhoumeng on
  * 2017.5.17.
@@ -19,16 +19,15 @@ public class DumpIpData { // dump 导入
     private static final String PASSWORD = "system";
     private static final String SQL = "INSERT INTO db_1702.ip VALUES (NULL, ?, ?, ?)";
     private static int counter;
-    private static Connection connection;
     private static PreparedStatement preparedStatement;
 
     public static void main(String[] args) throws SQLException {
         long start = System.currentTimeMillis();
         new Driver();
-        connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
         connection.setAutoCommit(false); // *** commit 事务 提交
         preparedStatement = connection.prepareStatement(SQL);
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/ip.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("data/ip.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String min = line.split("\\s+")[0];

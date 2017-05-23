@@ -6,7 +6,11 @@ CREATE TABLE db_1702.ip (
   max VARCHAR(255) COMMENT '终止 IP 地址',
   geo VARCHAR(255) COMMENT '地理位置'
 );
-SELECT count(*)
+SELECT *
 FROM db_1702.ip;
 
 TRUNCATE TABLE db_1702.ip;
+
+SELECT *
+FROM db_1702.ip
+WHERE inet_aton('127.0.0.1') BETWEEN inet_aton(min) AND inet_aton(max);
