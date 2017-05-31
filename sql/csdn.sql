@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS db_1702.csdn;
-CREATE TABLE db_1702.csdn (
+
+DROP TABLE db_1702.csdn;
+CREATE TABLE IF NOT EXISTS db_1702.csdn (
   id       INT AUTO_INCREMENT PRIMARY KEY
   COMMENT 'ID PK',
   username VARCHAR(255) COMMENT '用户名',
@@ -11,7 +12,7 @@ CREATE TABLE db_1702.csdn (
 SELECT count(*)
 FROM db_1702.csdn;
 
-LOAD DATA LOCAL INFILE '/Users/mingfei/Desktop/www.csdn.net.sql'
+LOAD DATA LOCAL INFILE 'C:\\Users\\ASUS\\Desktop\\www.csdn.net.sql'
 INTO TABLE db_1702.csdn
 FIELDS TERMINATED BY ' # ' (username, password, email)
 SET id = NULL;
@@ -21,3 +22,6 @@ FROM db_1702.csdn
 GROUP BY password
 ORDER BY count(password) DESC
 LIMIT 10;
+
+SELECT *
+FROM db_1702.csdn;

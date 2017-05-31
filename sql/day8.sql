@@ -1,4 +1,4 @@
-SELECT  *
+SELECT *
 FROM scott.dept;
 
 CREATE VIEW scott.v_emp_10
@@ -46,7 +46,7 @@ SET scott.v_emp_dept.ENAME = 'scott'
 WHERE scott.v_emp_dept.ENAME = 'scott new';
 
 CREATE VIEW scott.v_max
-  AS
+AS
   SELECT max(sal) max_sal
   FROM scott.emp;
 
@@ -98,7 +98,6 @@ WHERE sal > (
 /*
 transaction 事务
 SELECT ...
-
 DML
 ---------------------------------
 UPDATE1 ...   ok    ok    X    X|
@@ -107,36 +106,66 @@ UPDATE2 ...   ok    X    ok    X|
 SELECT ...
 */
 
-START TRANSACTION ;
+START TRANSACTION;
 
 SELECT *
 FROM scott.emp;
 
-TRUNCATE TABLE scott.emp;
+TRUNCATE TABLE scott.emp; --
+
+DELETE FROM scott.emp; -- DML
+
+ROLLBACK; -- roll back 回滚
+
+-- update ALLEN sal - 1000
+-- update WARD  sal + 1000
+
+START TRANSACTION;
+-- DML
+UPDATE scott.emp
+SET ENAME = 'allen new'
+WHERE ENAME = 'allen';
+
+COMMIT; -- 提交\ [kə'mɪt]
+
+ROLLBACK;
+
+CREATE VIEW scott.v_test -- DDL COMMIT
+AS
+  SELECT *
+  FROM scott.dept;
+
+SELECT *
+FROM scott.emp;
+
+-- descend
+-- describe
+
+
+-- save point 保留点
+START TRANSACTION;
+
+UPDATE scott.emp
+SET ename = 'ALLEN'
+WHERE EMPNO = 7499;
+
+SAVEPOINT a;
+
+DELETE FROM scott.emp
+WHERE EMPNO = 7499;
+
+SAVEPOINT b;
+
+INSERT INTO scott.emp (EMPNO, ENAME)
+  VALUE (1234, 'tester');
+
+SAVEPOINT c;
 
 DELETE FROM scott.emp;
 
-ROLLBACK ; -- roll back 回滚
-
-# update allen sal - 1000
-# update ward  sal + 1000
-
-start TRANSACTION ;
-
-UPDATE scott.emp
-    SET SAL = SAL + 1000
-WHERE ENAME = 'allen';
-
-UPDATE scott.emp
-    SET SAL = SAL - 1000
-WHERE ENAME = 'allen';
-
-COMMIT ;
-
-ROLLBACK ;
+COMMIT;
+ROLLBACK TO a;
+ROLLBACK;
 
 SELECT *
-  FROM scott.emp;
-
-SELECT *
-FROM mysql.user;
+FROM scott.emp;

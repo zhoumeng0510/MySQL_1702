@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS ks_test;
+CREATE DATABASE ks_test;
+
+DROP TABLE IF EXISTS ks_test.t1;
+CREATE TABLE ks_test.t1 (
+  id       INT AUTO_INCREMENT PRIMARY KEY
+  COMMENT 'ID PK',
+  emil     VARCHAR(255) COMMENT '邮箱',
+  username VARCHAR(255) COMMENT '账户',
+  password VARCHAR(255) COMMENT '密码'
+);
+SELECT *
+FROM ks_test.t1;
